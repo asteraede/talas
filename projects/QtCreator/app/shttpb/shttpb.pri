@@ -55,30 +55,39 @@ XOS_CONSOLE_MAIN_MAIN \
 # shttpb HEADERS
 #
 shttpb_HEADERS += \
-$${STARA_SRC}/xos/app/console/protocol/xttp/base/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/xttp/base/main.hpp \
-$${STARA_SRC}/xos/app/console/protocol/xttp/client/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/xttp/client/main.hpp \
-$${STARA_SRC}/xos/app/console/protocol/xttp/server/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/xttp/server/main.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/base/main_opt.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/base/main.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/client/main_opt.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/client/main.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/server/main_opt.hpp \
+$${RETE_SRC}/xos/app/console/network/sockets/server/main.hpp \
 \
-$${STARA_SRC}/xos/app/console/protocol/http/base/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/http/base/main.hpp \
-$${STARA_SRC}/xos/app/console/protocol/http/client/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/http/client/main.hpp \
-$${STARA_SRC}/xos/app/console/protocol/http/server/main_opt.hpp \
-$${STARA_SRC}/xos/app/console/protocol/http/server/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/base/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/base/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/client/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/client/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/server/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/xttp/server/main.hpp \
 \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/base/main_opt.hpp \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/base/main.hpp \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/client/main_opt.hpp \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/client/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/base/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/base/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/client/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/client/main.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/server/main_opt.hpp \
+$${STARA_SRC}/xos/app/console/network/sockets/protocol/http/server/main.hpp \
+\
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/base/main_opt.hpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/base/main.hpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/client/main_opt.hpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/client/main.hpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/server/main_opt.hpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/server/main.hpp \
 
 # shttpb SOURCES
 #
 shttpb_SOURCES += \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/client/main_opt.cpp \
-$${TATALAS_SRC}/xos/app/console/protocol/shttp/client/main.cpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/base/main_opt.cpp \
+$${TATALAS_SRC}/xos/app/console/network/sockets/protocol/shttp/base/main.cpp \
 
 ########################################################################
 # shttpb FRAMEWORKS
