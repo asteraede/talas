@@ -98,19 +98,9 @@ protected:
         }
         return err;
     }
-    virtual int set_this_content_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_content_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_content_run;
-        return err;
-    }
-    virtual int content_run_set(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_run_set(argc, argv, env))) {
-            if (!(err = set_this_content_run(argc, argv, env))) {
-            } else {
-            }
-        } else {
-        }
         return err;
     }
     /// ...content_type_run
@@ -121,19 +111,9 @@ protected:
         }
         return err;
     }
-    virtual int set_this_content_type_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_content_type_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_content_type_run;
-        return err;
-    }
-    virtual int content_type_run_set(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_type_run_set(argc, argv, env))) {
-            if (!(err = set_this_content_type_run(argc, argv, env))) {
-            } else {
-            }
-        } else {
-        }
         return err;
     }
     /// ...content_encoding_run
@@ -144,19 +124,9 @@ protected:
         }
         return err;
     }
-    virtual int set_this_content_encoding_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_content_encoding_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_content_encoding_run;
-        return err;
-    }
-    virtual int content_encoding_run_set(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_encoding_run_set(argc, argv, env))) {
-            if (!(err = set_this_content_encoding_run(argc, argv, env))) {
-            } else {
-            }
-        } else {
-        }
         return err;
     }
 

@@ -92,19 +92,9 @@ protected:
         }
         return err;
     }
-    virtual int set_this_request_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_request_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_request_run;
-        return err;
-    }
-    virtual int request_run_set(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::request_run_set(argc, argv, env))) {
-            if (!(err = set_this_request_run(argc, argv, env))) {
-            } else {
-            }
-        } else {
-        }
         return err;
     }
     /// ...method_run
@@ -115,19 +105,9 @@ protected:
         }
         return err;
     }
-    virtual int set_this_method_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_method_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_method_run;
-        return err;
-    }
-    virtual int method_run_set(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::method_run_set(argc, argv, env))) {
-            if (!(err = set_this_method_run(argc, argv, env))) {
-            } else {
-            }
-        } else {
-        }
         return err;
     }
     /// ...parameter_run
@@ -138,19 +118,25 @@ protected:
         }
         return err;
     }
-    virtual int set_this_parameter_run(int argc, char_t** argv, char_t** env) {
+    virtual int set_parameter_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         run_ = &derives::this_parameter_run;
         return err;
     }
-    virtual int parameter_run_set(int argc, char_t** argv, char_t** env) {
+
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...output_generate_hello_run
+    virtual int this_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
-        if (!(err = extends::parameter_run_set(argc, argv, env))) {
-            if (!(err = set_this_parameter_run(argc, argv, env))) {
-            } else {
-            }
+        if (!(err = extends::output_generate_hello_run(argc, argv, env))) {
         } else {
         }
+        return err;
+    }
+    virtual int set_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::this_output_generate_hello_run;
         return err;
     }
 
