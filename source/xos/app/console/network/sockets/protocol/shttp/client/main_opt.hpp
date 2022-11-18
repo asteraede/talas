@@ -37,8 +37,9 @@ namespace client {
 /// class main_optt
 template 
 <class TOutput = xos::protocol::sttp::client::output, 
+ class TStringOutput = xos::io::string::output,
  class TExtends = xos::app::console::network::sockets::protocol::shttp::base::maint
- <TOutput, xos::app::console::network::sockets::protocol::shttp::base::main_optt
+ <TOutput, TStringOutput, xos::app::console::network::sockets::protocol::shttp::base::main_optt
  <xos::app::console::network::sockets::protocol::http::client::maint<> > >, 
  class TImplements = typename TExtends::implements>
 
@@ -74,6 +75,9 @@ protected:
     typedef typename extends::output_t output_t;
     typedef typename extends::output_to_t output_to_t;
 
+    typedef typename extends::string_output_t string_output_t;
+    typedef typename string_output_t::string_t string_output_string__t;
+
     /// ...run
     int (derives::*run_)(int argc, char_t** argv, char_t** env);
     virtual int run(int argc, char_t** argv, char_t** env) {
@@ -86,6 +90,147 @@ protected:
         return err;
     }
 
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...client_output_generate_hello_run
+    virtual int client_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int before_client_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_client_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_client_output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_client_output_generate_hello_run(argc, argv, env))) {
+            int err2 = 0;
+            err = client_output_generate_hello_run(argc, argv, env);
+            if ((err2 = after_client_output_generate_hello_run(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+    virtual int client_output_generate_hello_run_set(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    /// ...output_generate_hello_run
+    virtual int output_generate_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        err = all_client_output_generate_hello_run(argc, argv, env);
+        return err;
+    }
+    virtual int output_generate_hello_run_set(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        err = client_output_generate_hello_run_set(argc, argv, env);
+        return err;
+    }
+
+    /// ...client_output_client_hello_run
+    virtual int client_output_client_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int before_client_output_client_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_client_output_client_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_client_output_client_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_client_output_client_hello_run(argc, argv, env))) {
+            int err2 = 0;
+            err = client_output_client_hello_run(argc, argv, env);
+            if ((err2 = after_client_output_client_hello_run(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+    /// ...output_client_hello_run
+    virtual int output_client_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        err = all_client_output_client_hello_run(argc, argv, env);
+        return err;
+    }
+
+    /// ...client_output_server_hello_run
+    virtual int client_output_server_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int before_client_output_server_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_client_output_server_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_client_output_server_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = before_client_output_server_hello_run(argc, argv, env))) {
+            int err2 = 0;
+            err = client_output_server_hello_run(argc, argv, env);
+            if ((err2 = after_client_output_server_hello_run(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+    /// ...output_server_hello_run
+    virtual int output_server_hello_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        err = all_client_output_server_hello_run(argc, argv, env);
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...hello_message_option...
+    virtual int on_set_client_hello_message_option
+    (const char_t* optarg, int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+        } else {
+        }
+        return err;
+    }
+    virtual int on_client_hello_message_option_set
+    (const char_t* optarg, int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+        } else {
+        }
+        return err;
+    }
+    virtual int on_set_hello_message_option
+    (const char_t* optarg, int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = on_set_client_hello_message_option(optarg, optind, argc, argv, env))) {
+        } else {
+        }
+        return err;
+    }
+    virtual int on_hello_message_option_set
+    (const char_t* optarg, int optind, int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = on_client_hello_message_option_set(optarg, optind, argc, argv, env))) {
+        } else {
+        }
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
 protected:
 }; /// class main_optt
 typedef main_optt<> main_opt;

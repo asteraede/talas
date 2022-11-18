@@ -23,6 +23,7 @@
 
 #include "xos/app/console/network/sockets/protocol/shttp/base/main_opt.hpp"
 #include "xos/protocol/sttp/base/output.hpp"
+#include "xos/io/string/output.hpp"
 
 #define XOS_NETWORK_SOCKETS_PROTOCOL_SHTTP_PORT 8448
 
@@ -45,6 +46,7 @@ namespace base {
 /// class maint
 template 
 <class TOutput = xos::protocol::sttp::base::output, 
+ class TStringOutput = xos::io::string::output,
  class TExtends = xos::app::console::network::sockets::protocol::shttp::base::main_opt, 
  class TImplements = typename TExtends::implements>
 
@@ -83,6 +85,9 @@ protected:
     typedef TOutput output_t;
     typedef typename output_t::output_to_t output_to_t;
 
+    typedef TStringOutput string_output_t;
+    typedef typename string_output_t::string_t string_output_string__t;
+
     /// ...run
     int (derives::*run_)(int argc, char_t** argv, char_t** env);
     virtual int run(int argc, char_t** argv, char_t** env) {
@@ -92,6 +97,48 @@ protected:
         } else {
             err = extends::run(argc, argv, env);
         }
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...content_run
+    virtual int this_content_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = extends::content_run(argc, argv, env))) {
+        } else {
+        }
+        return err;
+    }
+    virtual int set_content_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::this_content_run;
+        return err;
+    }
+    /// ...content_type_run
+    virtual int this_content_type_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = extends::content_type_run(argc, argv, env))) {
+        } else {
+        }
+        return err;
+    }
+    virtual int set_content_type_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::this_content_type_run;
+        return err;
+    }
+    /// ...content_encoding_run
+    virtual int this_content_encoding_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        if (!(err = extends::content_encoding_run(argc, argv, env))) {
+        } else {
+        }
+        return err;
+    }
+    virtual int set_content_encoding_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::this_content_encoding_run;
         return err;
     }
 
@@ -179,10 +226,16 @@ protected:
         return (short&)connect_port_;
     }
 
+    /// ...content...
+    virtual string_t& content_string() const {
+        return (string_t&)content_string_;
+    }
+
 protected:
     output_t output_;
     bool verbose_output_;
     short accept_port_, connect_port_;
+    string_t content_string_;
 }; /// class maint
 typedef maint<> main;
 

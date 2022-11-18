@@ -430,6 +430,10 @@ protected:
         int err = 0;
         return err;
     }
+    virtual int output_generate_hello_run_set(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
 
     /// ...client_output_client_hello_run
     virtual int client_output_client_hello_run(int argc, char_t** argv, char_t** env) {
@@ -676,6 +680,10 @@ protected:
         return err;
     }
     virtual int on_set_output_hello_message_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int output_hello_message_run_set(int argc, char_t** argv, char_t** env) {
         int err = 0;
         return err;
     }
@@ -948,6 +956,8 @@ protected:
                 if (!(err = on_hello_message_option_set(optarg, optind, argc, argv, env))) {
                     if (!(err = set_output_hello_message_run(argc, argv, env))) {
                         if (!(err = on_set_output_hello_message_run(argc, argv, env))) {
+                            if (!(err = output_hello_message_run_set(argc, argv, env))) {
+                            }
                         }
                     }
                 } else {
@@ -957,6 +967,8 @@ protected:
         } else {
             if (!(err = set_output_generate_hello_run(argc, argv, env))) {
                 if (!(err = on_set_output_generate_hello_run(argc, argv, env))) {
+                    if (!(err = output_generate_hello_run_set(argc, argv, env))) {
+                    }
                 }
             }
         }
