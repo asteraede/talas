@@ -87,59 +87,12 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
 
-    /// ...content_run
-    virtual int this_content_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_content_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_content_run;
-        return err;
-    }
-    /// ...content_type_run
-    virtual int this_content_type_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_type_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_content_type_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_content_type_run;
-        return err;
-    }
-    /// ...content_encoding_run
-    virtual int this_content_encoding_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::content_encoding_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_content_encoding_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_content_encoding_run;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-
     /// ...request_run
     virtual int this_request_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         if (!(err = extends::request_run(argc, argv, env))) {
         } else {
         }
-        return err;
-    }
-    virtual int set_request_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_request_run;
         return err;
     }
     /// ...method_run
@@ -150,64 +103,12 @@ protected:
         }
         return err;
     }
-    virtual int set_method_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_method_run;
-        return err;
-    }
     /// ...parameter_run
     virtual int this_parameter_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
         if (!(err = extends::parameter_run(argc, argv, env))) {
         } else {
         }
-        return err;
-    }
-    virtual int set_parameter_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_parameter_run;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-
-    /// ...sockets_run
-    virtual int this_sockets_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::sockets_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_sockets_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_sockets_run;
-        return err;
-    }
-    /// ...host_run
-    virtual int this_host_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::host_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_host_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_host_run;
-        return err;
-    }
-    /// ...port_run
-    virtual int this_port_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        if (!(err = extends::port_run(argc, argv, env))) {
-        } else {
-        }
-        return err;
-    }
-    virtual int set_port_run(int argc, char_t** argv, char_t** env) {
-        int err = 0;
-        run_ = &derives::this_port_run;
         return err;
     }
 
