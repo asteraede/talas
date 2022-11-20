@@ -23,6 +23,7 @@
 
 #include "xos/app/console/network/sockets/protocol/shttp/client/main_opt.hpp"
 #include "xos/protocol/sttp/client/output.hpp"
+#include "xos/protocol/http/text/sttp/content/type.hpp"
 
 namespace xos {
 namespace app {
@@ -72,6 +73,11 @@ protected:
 
     typedef typename extends::string_output_t string_output_t;
     typedef typename string_output_t::string_t string_output_string__t;
+
+    typedef xos::protocol::http::content::type::name content_type_t;
+    typedef xos::protocol::http::text::sttp::content::type sttp_content_type_t;
+
+    typedef xos::protocol::http::response::message response_t;
 
     /// ...run
     int (derives::*run_)(int argc, char_t** argv, char_t** env);
@@ -157,8 +163,74 @@ protected:
         return err;
     }
 
+    /// ...outout_response
+    virtual int outout_response(response_t &rs, int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        bool response_output = false;
+        const content_type_t& content_type = rs.content_type();
+        const sttp_content_type_t& sttp_content_type = this->sttp_content_type();
+
+        LOGGER_IS_LOGGED_INFO("(sttp_content_type.is_equal(content_type))...");
+        if ((sttp_content_type.is_equal(content_type))) {
+            const char_t* chars = 0; size_t length = 0;
+
+            LOGGER_IS_LOGGED_INFO("(chars = rs.content_chars(length))...");
+            if ((chars = rs.content_chars(length))) {
+                output_t& output = this->output(); 
+                string_t& content_string = this->content_string();
+                string_output_t string_output(content_string);
+                output_to_t* old_output = output.set_output_to(&string_output);
+                const bool old_verbose_output = output.verbose_output(),
+                           verbose_output = this->verbose_output(); 
+
+                LOGGER_IS_LOGGED_INFO("...(chars = rs.content_chars(length = " << unsigned_to_string(length) << "))");
+                content_string.clear();
+                output.set_verbose_output(verbose_output);
+                LOGGER_IS_LOGGED_INFO("!(err = output.on_set_server_hello_messages_option(chars = \"" << chars << "\"))...");
+                if (!(err = output.on_set_server_hello_messages_option(chars))) {
+                    LOGGER_IS_LOGGED_INFO("...!(err = output.on_set_server_hello_messages_option(chars))");
+                    LOGGER_IS_LOGGED_INFO("!(err = output.output_server_hello_messages())...");
+                    if (!(err = output.output_server_hello_messages())) {
+                        LOGGER_IS_LOGGED_INFO("...!(err = output.output_server_hello_messages())");
+                        LOGGER_IS_LOGGED_INFO("(chars = content_string.has_chars(length))...");
+                        if ((chars = content_string.has_chars(length))) {
+                            LOGGER_IS_LOGGED_INFO("...(chars = content_string.has_chars(length = " << unsigned_to_string(length) << ")) = \"" << chars << "\"");
+                            this->err_flush();
+                            this->outln(chars, length);
+                            response_output = true;
+                        } else {
+                         LOGGER_IS_LOGGED_ERROR("...failed on (chars = content_string.has_chars(length))");
+                        }
+                    } else {
+                        LOGGER_IS_LOGGED_ERROR("...failed on !(" << signed_to_string(err) << " = output.output_server_hello_messages())");
+                    }
+                } else {
+                    LOGGER_IS_LOGGED_ERROR("...failed on !(" << signed_to_string(err) << " = output.on_set_server_hello_messages_option(chars))");
+                }
+                output.set_verbose_output(old_verbose_output);
+                output.set_output_to(old_output);
+            } else {
+                LOGGER_IS_LOGGED_ERROR("...failed on (chars = rs.content_chars(length))");
+            }
+            LOGGER_IS_LOGGED_INFO("...(sttp_content_type.is_equal(content_type))");
+        } else {
+            LOGGER_IS_LOGGED_INFO("...failed on (sttp_content_type.is_equal(content_type))");
+        }
+        if (!(response_output)) {
+            if (!(err = extends::outout_response(rs, argc, argv, env))) {
+            }
+        }
+        return err;
+    }
+
+    /// sttp_content_type
+    virtual sttp_content_type_t& sttp_content_type() const {
+        return (sttp_content_type_t&)sttp_content_type_;
+    }
+
     ///////////////////////////////////////////////////////////////////////
 protected:
+    sttp_content_type_t sttp_content_type_;
 }; /// class maint
 typedef maint<> main;
 

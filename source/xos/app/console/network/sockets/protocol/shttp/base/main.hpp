@@ -186,6 +186,22 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
 
+    /// ...respond_run
+    virtual int this_respond_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        /*if (!(err = extends::respond_run(argc, argv, env))) {
+        } else {
+        }*/
+        return err;
+    }
+    virtual int set_respond_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        run_ = &derives::this_respond_run;
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+
     /// ...sockets_run
     virtual int this_sockets_run(int argc, char_t** argv, char_t** env) {
         int err = 0;
